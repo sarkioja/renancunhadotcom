@@ -1,0 +1,294 @@
+@import '_reset'
+
+// Colors
+$blue = #00bcd4
+$blue2 = #0092a5
+$white = #fff
+$gray = #333
+$link = #337ab7
+$footer = #eee
+$contact = #e3dede
+$lightGray = #777
+$iconBg = #2e2e2e
+$linkedin = #0073b2
+$twitter = #34B0DF
+$github = #696969
+$messenger = #0084ff
+
+// Animations
+@keyframes down
+  0%, 40%
+    transform translateY(0)
+  70%
+    transform translateY(5px)
+
+@keyframes up
+  0%, 40%
+    transform translateY(0)
+  70%
+    transform translateY(-5px)
+
+//Styles
+*
+  margin 0
+  padding 0
+  scroll-behavior smooth
+
+body
+  font-family "Lato", sans-serif
+  font-size 1em
+  color $gray
+  text-rendering optimizeLegibility
+  transition scroll 1s ease-in-out
+
+h1, h2
+  font-family "Nunito", sans-serif
+
+ul
+  display inline-block
+  list-style-type none
+
+li
+  display inline
+
+a
+  text-decoration none
+
+//  :hover
+//    opacity 0.5
+
+// Navbar
+.navbar
+  background-color $blue
+  color $white
+  font-size 0.75em
+  line-height 1.4em
+  letter-spacing 0.2em
+  text-transform uppercase
+  z-index 2
+  display flex
+  justify-content space-between
+  align-items center
+  width 100vw
+  height 4.25em
+  position fixed
+  padding 0 7em 0 7em
+
+  &__title
+    font-family "Lato", sans-serif
+    font-weight normal
+    font-size 1.45em
+
+  &__items
+    font-size 1.005em
+
+  &__item
+    margin-left 0
+
+  &__link
+    color $white
+    padding 1.5em 1em
+    transition all .3s ease-in-out
+
+    &:hover,
+    &:focus,
+    &:active
+      background-color $white
+      color $blue
+
+.active
+  @extends .navbar__link:focus
+
+// About
+.about
+  display flex
+  justify-content center
+  align-items center
+  flex-direction column
+  text-align center
+  background linear-gradient(to bottom, $blue, $blue 60%, $blue2)
+  color $white
+  height 100vh
+
+  &__title
+    font-size 4em
+    font-weight 400
+
+  &__text
+    font-size 1.5em
+
+  &__more
+    position absolute
+    bottom 2em
+    animation down 1s infinite
+    animation-direction alternate
+    animation-timing-function ease-in-out
+
+  &__scroll
+    fill $white
+
+// Portfolio
+.portfolio
+  //height 100vh
+  padding 5.5em 5em
+
+  &__title
+    font-size 2.25em
+    margin-bottom 1em
+
+  &__text
+    margin-bottom 2em
+
+  &__cards
+    //width 100%
+    //height 100%
+    display flex
+    flex-flow row wrap
+    justify-content space-around
+    align-content space-between
+
+//Card
+.card
+  max-width 22.6em
+  border 1px solid $contact
+  border-radius 0.3em
+  padding 0.3em
+  margin-bottom 2em
+
+  &__image
+    margin-bottom 1.25em
+
+  &__title
+    font-size 1.5em
+    margin 0 0 0.625em 0.25em
+
+  &__subtitle
+    font-size 0.65em
+    font-weight lighter
+    color $lightGray
+
+  &__description
+    font-size 0.875em
+    margin 0 0 2em 0.3em
+    line-height 1.5em
+
+// Contact
+.contact
+  background-color $contact
+  padding 5.5em 5em
+
+  &__title
+    font-size 2.25em
+    margin-bottom 1.5em
+
+  &__content
+    font-size 1.3em
+    line-height 2em
+
+  &__mail
+    color $link
+    transition all .3s ease-in-out
+
+    &:hover
+      background-color $link
+      color $white
+
+  &__list
+    margin 3em 0 5em 0
+
+  &__link
+    margin-right 0.5em
+
+//Footer
+.footer
+  background-color $footer
+  text-align center
+  padding 3em 0 3em 0
+
+  &__text
+    margin-bottom 1.5em
+
+  &__link
+    color $blue2
+
+    &:hover
+      opacity 0.7
+
+    > span
+      display block
+
+      &:hover
+        opacity 0.7
+
+  &__scroll
+    fill $blue2
+
+    &:hover
+      opacity 0.7
+      animation up 1s infinite
+      animation-direction alternate
+      animation-timing-function ease-in-out
+
+// Misc
+.icon
+  display inline-block
+  text-indent -9999px
+  overflow hidden
+
+.icon-social
+  @extends .icon
+  background-color $iconBg
+  border-radius 50%
+  width 3.5em
+  height 3.5em
+  background-repeat no-repeat
+  background-position center
+  background-size 1.4em
+  transition all .3s ease-in-out
+
+  &:hover
+    transform: scale(1.1);
+
+.heart
+  background-image url('../imgs/i/iconmonstr-favorite-3-12.png')
+  background-repeat no-repeat
+  background-position center
+  background-size contain
+  width 0.75em
+
+.coffee
+  background-image url('../imgs/i/iconmonstr-coffee-20-16.png')
+  background-repeat no-repeat
+  background-position center
+  background-size contain
+  width 0.9em
+
+.linkedin
+  background-image url('../imgs/i/iconmonstr-linkedin-1-24.png')
+
+  &:hover
+    background-color $linkedin
+
+.twitter
+  background-image url('../imgs/i/iconmonstr-twitter-1-24.png')
+
+  &:hover
+    background-color $twitter
+
+.github
+  background-image url('../imgs/i/iconmonstr-github-1-24.png')
+
+  &:hover
+    background-color $github
+
+.codepen
+  background-image url('../imgs/i/iconmonstr-code-2-24.png')
+
+  &:hover
+    background-color $github
+
+.messenger
+  background-image url('../imgs/i/iconmonstr-facebook-messenger-1-24.png')
+
+  &:hover
+    background-color $messenger

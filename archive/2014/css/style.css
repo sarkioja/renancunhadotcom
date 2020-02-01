@@ -1,0 +1,281 @@
+
+/******************************************************
+IMPORTS
+******************************************************/
+
+@import url("reset.css");
+
+/******************************************************
+GLOBAL
+******************************************************/
+
+html, body {
+  height: 100%;
+}
+
+body {
+	background-color: #e2e2e2;
+	font-family: "tk-source-sans-pro", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+a {
+	text-decoration: none;
+}
+
+a, a:hover, a:active, a:focus  {
+   outline: 0;
+}
+
+#wrap {
+	background-color: #f0f0f0;
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	padding-bottom: 60px;
+}
+
+h1 {
+	background: url(../img/sprites.png) -200px 0; 
+	height: 100px;
+	left: 47px;
+	position: fixed;
+	top: 0;
+	width: 145px;
+	z-index: 100;
+}
+
+h1 a {
+	display: block;
+	height: 100px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 145px;
+}
+
+
+/******************************************************
+HOMEPAGE
+******************************************************/
+
+body#home {
+	background: #101010 url(../img/bg.jpg) 50% 50%;
+}
+
+body#home #wrap {
+	background: none;
+}
+
+h1#blue {
+	background: url(../img/sprites.png) 0 0; 
+}
+
+#alt-logo { /*Same thing as H1*/
+	background: url(../img/sprites.png) -200px 0; 
+	height: 100px;
+	left: 47px;
+	position: fixed;
+	top:-100px;
+	width: 145px;
+	z-index: 100;
+}
+
+#alt-logo a {
+	display: block;
+	height: 100px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 145px;
+}
+
+#intro {
+	padding: 120px 0 0 50px;
+	width: auto;
+}
+
+h2 {
+	color: #fff;
+	display: block;
+	font-family: "league-gothic-1",sans-serif;
+	/*font-size: 160px; RESIZED BY FITTEXT.JS*/
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing:-0.025em;
+	line-height: 93%;/*82%;*/
+	text-transform: uppercase;
+}
+
+
+/**** Meta Kwicks Menu ****/
+
+#meta-home {
+	list-style: none;  
+    margin: 30px 0 0 50px;  
+    padding: 0;  
+    position: relative;
+	float: left;
+}
+
+#meta-home li {  
+	background: url(../img/sprites.png); 
+	cursor: pointer;
+	display: block; 
+	float: left;
+	height: 50px;
+	overflow: hidden;  
+	padding: 0;
+	white-space:nowrap;
+	width: 70px;
+}
+
+#meta-home li a {
+	color: #fff;
+	display: block;
+	*display:none;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 18px 0 18px 58px;
+	opacity: 0;
+	text-transform: uppercase;
+	-moz-transition: opacity 0.3s ease-in;
+	-o-transition: opacity 0.3s ease-in;
+	-ms-transition: opacity 0.3s ease-in;
+	transition: opacity 0.3s ease-in;
+}
+
+#meta-home li.active a {
+	opacity: 1;
+	*display: block;
+}
+
+#meta-home li#email { background-position: 0 -100px;}
+#meta-home li#email.active { background-position: -200px -100px;}
+
+#meta-home li#twitter { background-position: 0 -250px;}  
+#meta-home li#twitter.active { background-position: -200px -250px;}
+
+#meta-home li#facebook { background-position: 0 -300px;}  
+#meta-home li#facebook.active { background-position: -200px -300px;}
+
+#meta-home li#linkedin { background-position: 0 -350px;}  
+#meta-home li#linkedin.active { background-position: -200px -350px;}
+
+
+/******************************************************
+HEADER
+******************************************************/
+
+#header {
+	background-color: #fff;
+	height: 40px;
+	width: 100%;
+}
+
+#nav {
+	float: right;
+	list-style: none;
+	margin-right: 50px;
+}
+
+#nav li {
+	float: left;
+	height: 38px;
+	margin-left: 20px;
+}
+
+#nav li a {
+	color: #828282;
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	padding: 15px 2px 12px 2px; 
+	text-transform: uppercase;
+}
+
+#nav li a:hover, #nav li.active a:hover {
+	color: #00a8df;
+}
+
+#nav li.active a {
+	color: #414141;
+}
+
+
+/******************************************************
+META - FOOTER
+******************************************************/
+
+#meta-page {
+	background-color: #e2e2e2;
+	clear: both;
+	height: 180px;
+	margin: 0 0 0 0;
+	width: 100%;
+	}
+
+#meta {
+	list-style: none;  
+    margin: 0 auto; 
+	padding-top: 40px;
+	width: 540px;
+}
+
+#meta li {  
+	background: url(../img/sprites.png); 
+	display: block; 
+	float: left;
+	height: 60px;
+	padding: 0;
+	width: 90px;
+}
+
+#meta li a {
+	display: block;
+	height: 60px;
+	text-indent: -9999px;
+	overflow: hidden;
+	width: 90px;	
+}
+
+#meta li#email { 			background-position: 0 -400px;}
+#meta li#email:hover { 		background-position: 0 -460px;}
+
+#meta li#twitter { 			background-position: -270px -400px;}  
+#meta li#twitter:hover { 	background-position: -270px -460px;}
+
+#meta li#facebook { 		background-position: -360px -400px;}  
+#meta li#facebook:hover { 	background-position: -360px -460px;}
+
+#meta li#linkedin { 		background-position: -450px -400px;}  
+#meta li#linkedin:hover { 	background-position: -450px -460px;}
+
+
+
+
+/******************************************************
+CLEARFIX
+******************************************************/
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
