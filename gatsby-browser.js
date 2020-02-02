@@ -1,4 +1,10 @@
-'use strict';
+/**
+ * Implement Gatsby's Browser APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/browser-apis/
+ */
 
-require('./src/assets/scss/init.scss');
-require('./static/css/prismjs/theme.min.css');
+// const { registerLinkResolver } = require('gatsby-source-prismic-graphql');
+// const { linkResolver } = require('./src/utils/prismic-configuration');
+
+// registerLinkResolver(linkResolver);
