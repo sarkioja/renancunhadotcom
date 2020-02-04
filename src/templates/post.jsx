@@ -4,9 +4,11 @@ import Helmet from "react-helmet";
 import Moment from 'react-moment';
 import { graphql } from 'gatsby';
 import { RichText } from "prismic-reactjs";
+
 import styled from "@emotion/styled";
-import colors from "styles/colors";
 import Layout from "components/Layout";
+
+import Theme from "../styles/theme"
 
 const PostHeroContainer = styled("div")`
     max-height: 500px;
@@ -26,7 +28,7 @@ const PostHeroAnnotation = styled("div")`
 
     h6 {
         text-align: right;
-        color: ${colors.grey600};
+        color: ${props => props.theme.colors.grey600};
         font-weight: 400;
         font-size: 0.85rem;
     }
@@ -41,7 +43,7 @@ const PostCategory = styled("div")`
     margin: 0 auto;
     text-align: center;
     font-weight: 600;
-    color: ${colors.grey600};
+    color: ${props => props.theme.colors.grey600};
 
     h5 {
         margin-top: 0;
@@ -81,7 +83,7 @@ const PostMetas = styled("div")`
     margin-bottom: 2em;
     justify-content: space-between;
     font-size: 0.85em;
-    color: ${colors.grey600};
+    color: ${props => props.theme.colors.grey600};
 `
 
 const PostAuthor = styled("div")`
@@ -133,6 +135,7 @@ const Post = ({ post, meta }) => {
                     },
                 ].concat(meta)}
             />
+            <Theme>
             <Layout>
                 <PostCategory>
                     {RichText.render(post.post_category)}
@@ -160,6 +163,7 @@ const Post = ({ post, meta }) => {
                     {RichText.render(post.post_body)}
                 </PostBody>
             </Layout>
+            </Theme>
         </>
     )
 }

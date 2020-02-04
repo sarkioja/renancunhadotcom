@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 import * as S from './styled'
 
-import Logo from "components/_ui/Logo";
+import Logo from "../Logo";
 import spooch from "images/oscar-icon.png"
 
 const Footer = () => (

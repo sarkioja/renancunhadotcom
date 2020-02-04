@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled from "@emotion/styled";
-import colors from "styles/colors";
 import { Link, graphql } from 'gatsby';
 import { RichText } from "prismic-reactjs";
-import Button from "components/_ui/Button";
+import Button from "components/Button";
 import Layout from "components/Layout";
 
 const ProjectHeroContainer = styled("div")`
-    background: ${colors.grey200};
+    background: ${props => props.theme.colors.grey200};
     display: flex;
     justify-content: center;
     align-items: flex-end;

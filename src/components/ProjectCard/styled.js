@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import dimensions from "styles/dimensions";
-import colors from "styles/colors";
 
 import { Link } from "gatsby";
 
@@ -32,7 +31,7 @@ export const ProjectCardContainer = styled(Link)`
         transition: all 150ms ease-in-out;
 
         .ProjectCardAction {
-            color: ${colors.blue500};
+            color: ${props => props.theme.colors.blue500};
             transition: all 150ms ease-in-out;
 
             span {
@@ -66,7 +65,7 @@ export const ProjectCardContent = styled.div`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
+        background: ${props => props.theme.colors.blue500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
@@ -83,7 +82,7 @@ export const ProjectCardContent = styled.div`
 
 export const ProjectCardCategory = styled.h6`
     font-weight: 600;
-    color: ${colors.grey600};
+    color: ${props => props.theme.colors.grey600};
 `
 
 export const ProjectCardTitle = styled.h3`
@@ -116,7 +115,7 @@ export const ProjectCardAction = styled.div`
 `
 
 export const ProjectCardImageContainer = styled.div`
-    background: ${colors.grey200};
+    background: ${props => props.theme.colors.grey200};
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -140,7 +139,7 @@ export const ProjectCardImageContainer = styled.div`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
+        background: ${props => props.theme.colors.blue500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;

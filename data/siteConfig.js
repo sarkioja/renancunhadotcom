@@ -7,7 +7,7 @@ const config = {
   //domain: "https://renancunha.com",
   //baseUrl: "https://renancunha.com", //Fix for SEO
   siteUrl: "https://renancunha.com",
-  //googleAnalyticsID: "UA-137536952-6",
+  googleAnalyticsID: "UA-157545692-1",
   backgroundColor: "#FFFDF9",
   themeColor: "#422f66",
 }

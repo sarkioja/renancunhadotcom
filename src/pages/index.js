@@ -5,10 +5,9 @@ import { RichText } from "prismic-reactjs";
 import { graphql, Link } from "gatsby";
 
 import styled from "@emotion/styled";
-import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 
-import Button from "components/_ui/Button";
+import Button from "components/Button";
 import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
@@ -30,21 +29,21 @@ const Hero = styled("div")`
             text-decoration: none;
             transition: all 100ms ease-in-out;
 
-            &:nth-of-type(1) { color: ${colors.blue500}; }
-            &:nth-of-type(2) { color: ${colors.orange500}; }
-            &:nth-of-type(3) { color: ${colors.purple500}; }
-            &:nth-of-type(4) { color: ${colors.green500}; }
-            &:nth-of-type(5) { color: ${colors.teal500}; }
+            &:nth-of-type(1) { color: ${props => props.theme.colors.blue500}; }
+            &:nth-of-type(2) { color: ${props => props.theme.colors.orange500}; }
+            &:nth-of-type(3) { color: ${props => props.theme.colors.purple500}; }
+            &:nth-of-type(4) { color: ${props => props.theme.colors.green500}; }
+            &:nth-of-type(5) { color: ${props => props.theme.colors.teal500}; }
 
             &:hover {
                 cursor: pointer;
                 transition: all 100ms ease-in-out;
 
-                &:nth-of-type(1) { color: ${colors.blue600};    background-color: ${colors.blue200};}
-                &:nth-of-type(2) { color: ${colors.orange600};  background-color: ${colors.orange200};}
-                &:nth-of-type(3) { color: ${colors.purple600};  background-color: ${colors.purple200};}
-                &:nth-of-type(4) { color: ${colors.green600};   background-color: ${colors.green200};}
-                &:nth-of-type(5) { color: ${colors.teal600};    background-color: ${colors.teal200};}
+                &:nth-of-type(1) { color: ${props => props.theme.colors.blue600};    background-color: ${props => props.theme.colors.blue200};}
+                &:nth-of-type(2) { color: ${props => props.theme.colors.orange600};  background-color: ${props => props.theme.colors.orange200};}
+                &:nth-of-type(3) { color: ${props => props.theme.colors.purple600};  background-color: ${props => props.theme.colors.purple200};}
+                &:nth-of-type(4) { color: ${props => props.theme.colors.green600};   background-color: ${props => props.theme.colors.green200};}
+                &:nth-of-type(5) { color: ${props => props.theme.colors.teal600};    background-color: ${props => props.theme.colors.teal200};}
 
             }
         }
@@ -84,7 +83,7 @@ const WorkAction = styled(Link)`
     }
 
     &:hover {
-        color: ${colors.blue500};
+        color: ${props => props.theme.colors.blue500};
         transition: all 150ms ease-in-out;
 
         span {
@@ -96,7 +95,7 @@ const WorkAction = styled(Link)`
 `
 
 const RenderBody = ({ home, projects, meta }) => (
-    <>
+    <Layout>
         <Helmet
             title={meta.title}
             titleTemplate={`%s | ${meta.title}`}
@@ -168,7 +167,7 @@ const RenderBody = ({ home, projects, meta }) => (
                 socialLinks={home.about_links}
             />
         </Section>
-    </>
+    </Layout>
 );
 
 export default ({ data }) => {

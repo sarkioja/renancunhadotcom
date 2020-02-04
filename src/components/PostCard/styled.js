@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 import { Link } from "gatsby";
 
-import colors from "styles/colors";
-
 export const PostCardContainer = styled(Link)`
-    border: 1px solid ${colors.grey200};
+    border: 1px solid ${props => props.theme.colors.grey200};
     padding: 3em 2.5em 2.25em 2.5em;
     border-radius: 3px;
     text-decoration: none;
@@ -20,7 +18,7 @@ export const PostCardContainer = styled(Link)`
         cursor: pointer;
 
         .PostCardAction {
-            color: ${colors.blue500};
+            color: ${props => props.theme.colors.blue500};
             transition: all 150ms ease-in-out;
 
             span {
@@ -34,7 +32,7 @@ export const PostCardContainer = styled(Link)`
 
 export const PostCategory = styled.h6`
     font-weight: 600;
-    color: ${colors.grey600};
+    color: ${props => props.theme.colors.grey600};
 `
 
 export const PostTitle = styled.h3`
@@ -48,7 +46,7 @@ export const PostMetas = styled.div`
     margin-top: 1.5em;
     justify-content: space-between;
     font-size: 0.85em;
-    color: ${colors.grey600};
+    color: ${props => props.theme.colors.grey600};
 `
 
 export const PostAuthor = styled.div`

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import colors from "styles/colors"
 
 export const FooterContainer = styled.div`
     padding-top: 3.75em;
@@ -15,7 +14,7 @@ export const FooterContainer = styled.div`
 
 export const FooterAuthor = styled.a`
     font-size: 0.75em;
-    color: ${colors.grey700};
+    color: ${props => props.theme.colors.grey700};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +22,7 @@ export const FooterAuthor = styled.a`
     margin-top: 1.5em;
 
     &:hover {
-        color: ${colors.blue900};
+        color: ${props => props.theme.colors.blue900};
 
         .FooterSpooch {
             animation-name: rotate;

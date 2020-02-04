@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import * as S from "./styled"
 
-import Button from "components/_ui/Button";
+import Button from "../Button/";
 
 const About = ({ bio, socialLinks }) => (
     <S.AboutContainer>

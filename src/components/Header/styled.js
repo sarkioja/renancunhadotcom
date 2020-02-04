@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 
 export const HeaderContainer = styled.div`
@@ -56,14 +55,14 @@ export const HeaderLinks = styled.div`
 
         &:hover {
             &:after {
-                background: ${colors.blue500};
+                background: ${props => props.theme.colors.blue500};
                 transition: 100ms ease-in-out background;
             }
         }
 
         &.Link--is-active {
             &:after {
-                background: ${colors.blue500};
+                background: ${props => props.theme.colors.blue500};
                 transition: 100ms ease-in-out background;
             }
         }

@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "gatsby";
 
 import * as S from './styled'
-import Logo from "components/_ui/Logo";
+
+import Logo from "../Logo";
 
 const Header = () => (
     <S.HeaderContainer>
