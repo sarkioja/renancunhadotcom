@@ -4,10 +4,10 @@ import { createGlobalStyle } from "styled-components"
 
 import * as S from './styled'
 
-import Theme from "../../styles/theme"
-import baseCSS from "../../styles/baseCSS"
-import Header from "../Header";
-import Footer from "../Footer";
+import Theme from "styles/theme"
+import baseCSS from "styles/baseCSS"
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 const GlobalStyles = createGlobalStyle`
     ${baseCSS}

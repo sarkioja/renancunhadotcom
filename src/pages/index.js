@@ -1,24 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { RichText } from "prismic-reactjs";
 import { graphql, Link } from "gatsby";
 
-import styled from "@emotion/styled";
-import dimensions from "styles/dimensions";
+import styled from "styled-components";
 
+import Seo from 'components/Seo'
 import Button from "components/Button";
 import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
 
-const Hero = styled("div")`
+const Hero = styled.div`
     padding-top: 2.5em;
     padding-bottom: 3em;
     margin-bottom: 6em;
     max-width: 830px;
 
-    @media(max-width:${dimensions.maxwidthMobile}px) {
+    @media(max-width:${props => props.theme.dimensions.maxwidthMobile}px) {
         margin-bottom: 3em;
     }
 
@@ -50,12 +48,12 @@ const Hero = styled("div")`
     }
 `
 
-const Section = styled("div")`
+const Section = styled.div`
     margin-bottom: 10em;
     display: flex;
     flex-direction: column;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
+    @media(max-width:${props => props.theme.dimensions.maxwidthTablet}px) {
         margin-bottom: 4em;
     }
 
@@ -71,7 +69,7 @@ const WorkAction = styled(Link)`
     transition: all 150ms ease-in-out;
     margin-left: auto;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
+    @media(max-width:${props => props.theme.dimensions.maxwidthTablet}px) {
        margin: 0 auto;
     }
 
@@ -94,101 +92,53 @@ const WorkAction = styled(Link)`
     }
 `
 
-const RenderBody = ({ home, projects, meta }) => (
-    <Layout>
-        <Helmet
-            title={meta.title}
-            titleTemplate={`%s | ${meta.title}`}
-            meta={[
-                {
-                    name: `description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:title`,
-                    content: meta.title,
-                },
-                {
-                    property: `og:description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                },
-                {
-                    name: `twitter:card`,
-                    content: `summary`,
-                },
-                {
-                    name: `twitter:creator`,
-                    content: meta.author,
-                },
-                {
-                    name: `twitter:title`,
-                    content: meta.title,
-                },
-                {
-                    name: `twitter:description`,
-                    content: meta.description,
-                },
-            ].concat(meta)}
-        />
-        <Hero>
-            <>
-                {RichText.render(home.hero_title)}
-            </>
-            <a href={home.hero_button_link.url}
-                target="_blank" rel="noopener noreferrer">
-                <Button>
-                    {RichText.render(home.hero_button_text)}
-                </Button>
-            </a>
-        </Hero>
-        <Section>
-            {projects.map((project, i) => (
-                <ProjectCard
-                    key={i}
-                    category={project.node.project_category}
-                    title={project.node.project_title}
-                    description={project.node.project_preview_description}
-                    thumbnail={project.node.project_preview_thumbnail}
-                    uid={project.node._meta.uid}
-                />
-            ))}
-            <WorkAction to={"/work"}>
-                See more work <span>&#8594;</span>
-            </WorkAction>
-        </Section>
-        <Section>
-            {RichText.render(home.about_title)}
-            <About
-                bio={home.about_bio}
-                socialLinks={home.about_links}
-            />
-        </Section>
-    </Layout>
-);
-
-export default ({ data }) => {
+const Index = ({ data }) => {
     //Required check for no data being returned
     const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
+    const home = doc.node;
     const projects = data.prismic.allProjects.edges;
-    const meta = data.site.siteMetadata;
 
-    if (!doc || !projects) return null;
+    if (!doc || !projects) return null
 
     return (
         <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta}/>
+            <Seo description={'Opa!'} title={'Página Inicial'} />
+
+            <Hero>
+                <>
+                    {RichText.render(home.hero_title)}
+                </>
+                <a href={home.hero_button_link.url}
+                    target="_blank" rel="noopener noreferrer">
+                    <Button>
+                        {RichText.render(home.hero_button_text)}
+                    </Button>
+                </a>
+            </Hero>
+            <Section>
+                {projects.map((project, i) => (
+                    <ProjectCard
+                        key={i}
+                        category={project.node.project_category}
+                        title={project.node.project_title}
+                        description={project.node.project_preview_description}
+                        thumbnail={project.node.project_preview_thumbnail}
+                        uid={project.node._meta.uid}
+                    />
+                ))}
+                <WorkAction to={"/work"}>
+                    See more work <span>&#8594;</span>
+                </WorkAction>
+            </Section>
+            <Section>
+                {RichText.render(home.about_title)}
+                <About
+                    bio={home.about_bio}
+                    socialLinks={home.about_links}
+                />
+            </Section>
         </Layout>
     )
-}
-
-RenderBody.propTypes = {
-    home: PropTypes.object.isRequired,
-    projects: PropTypes.array.isRequired,
-    meta: PropTypes.object.isRequired,
 };
 
 export const query = graphql`
@@ -229,12 +179,7 @@ export const query = graphql`
                 }
             }
         }
-        site {
-            siteMetadata {
-                title
-                description
-                author
-            }
-        }
     }
 `
+
+export default Index
