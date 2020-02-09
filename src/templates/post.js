@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import Moment from 'react-moment';
 import { graphql } from 'gatsby';
 import { RichText } from "prismic-reactjs";
 
-import styled from "@emotion/styled";
+import styled from "styled-components";
+
+import Seo from "components/Seo"
 import Layout from "components/Layout";
 
-import Theme from "../styles/theme"
-
-const PostHeroContainer = styled("div")`
+const PostHeroContainer = styled.div`
     max-height: 500px;
     overflow: hidden;
     display: flex;
@@ -23,7 +21,7 @@ const PostHeroContainer = styled("div")`
     }
 `
 
-const PostHeroAnnotation = styled("div")`
+const PostHeroAnnotation = styled.div`
     padding-top: 0.25em;
 
     h6 {
@@ -38,7 +36,7 @@ const PostHeroAnnotation = styled("div")`
     }
 `
 
-const PostCategory = styled("div")`
+const PostCategory = styled.div`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
@@ -51,7 +49,7 @@ const PostCategory = styled("div")`
     }
 `
 
-const PostTitle = styled("div")`
+const PostTitle = styled.div`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
@@ -61,7 +59,7 @@ const PostTitle = styled("div")`
     }
 `
 
-const PostBody = styled("div")`
+const PostBody = styled.div`
     max-width: 550px;
     margin: 0 auto;
 
@@ -75,7 +73,7 @@ const PostBody = styled("div")`
     }
 `
 
-const PostMetas = styled("div")`
+const PostMetas = styled.div`
     max-width: 550px;
     margin: 0 auto;
     display: flex;
@@ -86,57 +84,21 @@ const PostMetas = styled("div")`
     color: ${props => props.theme.colors.grey600};
 `
 
-const PostAuthor = styled("div")`
+const PostAuthor = styled.div`
     margin: 0;
 `
 
-const PostDate = styled("div")`
+const PostDate = styled.div`
     margin: 0;
 `
 
-const Post = ({ post, meta }) => {
+const Post = ({ data }) => {
+    const post = data.prismic.allPosts.edges[0].node;
+
     return (
-        <>
-            <Helmet
-                title={`${post.post_title[0].text} | Prist, Gatsby & Prismic Starter`}
-                titleTemplate={`%s | ${meta.title}`}
-                meta={[
-                    {
-                        name: `description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:title`,
-                        content: `${post.post_title[0].text} | Prist, Gatsby & Prismic Starter`,
-                    },
-                    {
-                        property: `og:description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:type`,
-                        content: `website`,
-                    },
-                    {
-                        name: `twitter:card`,
-                        content: `summary`,
-                    },
-                    {
-                        name: `twitter:creator`,
-                        content: meta.author,
-                    },
-                    {
-                        name: `twitter:title`,
-                        content: meta.title,
-                    },
-                    {
-                        name: `twitter:description`,
-                        content: meta.description,
-                    },
-                ].concat(meta)}
-            />
-            <Theme>
-            <Layout>
+        <Layout>
+            <Seo description={post.post_preview_description[0].text} title={post.post_title[0].text} />
+
                 <PostCategory>
                     {RichText.render(post.post_category)}
                 </PostCategory>
@@ -162,24 +124,9 @@ const Post = ({ post, meta }) => {
                 <PostBody>
                     {RichText.render(post.post_body)}
                 </PostBody>
-            </Layout>
-            </Theme>
-        </>
+        </Layout>
     )
 }
-
-export default ({ data }) => {
-    const postContent = data.prismic.allPosts.edges[0].node;
-    const meta = data.site.siteMetadata;
-    return (
-        <Post post={postContent} meta={meta}/>
-    )
-}
-
-Post.propTypes = {
-    post: PropTypes.object.isRequired,
-    meta: PropTypes.object.isRequired,
-};
 
 export const query = graphql`
     query PostQuery($uid: String) {
@@ -202,12 +149,7 @@ export const query = graphql`
                 }
             }
         }
-        site {
-            siteMetadata {
-                title
-                description
-                author
-            }
-        }
     }
 `
+
+export default Post
